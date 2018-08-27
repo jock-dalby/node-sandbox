@@ -2,8 +2,8 @@ console.log('Starting app.');
 
 // Built in file-system module
 const fs = require('fs');
-
 const errorHandler = err => err && console.log(err)
+
 /*
  * 2 ways to append a file.
  * If file does not exist it will create and append the text.
