@@ -2,6 +2,7 @@ console.log('Starting app.');
 
 // Built in file-system module
 const fs = require('fs');
+
 const errorHandler = err => err && console.log(err)
 
 /*
