@@ -7,7 +7,7 @@ const yargs = require('yargs');
 const notes = require('./notes.js')
 const argv = yargs.argv;
 
-// this is an array of all the command line arguments passed in when starting the app
+// NOTE: this is an array of all the command line arguments passed in when starting the app
 console.log('e.g. node app.js list',  '===> process.argv', process.argv);
 /*
 [ '/usr/local/bin/node', // Refers to node command
