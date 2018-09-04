@@ -26,7 +26,8 @@ var command = argv._[0];
 console.log('Command: ', command);
 
 if (command === 'add') {
-  notes.addNote(argv.title, argv.body);
+  const noteCreated = notes.addNote(argv.title, argv.body);
+  console.log(noteCreated ? `Note added: Title: ${noteCreated.title}, Body: ${noteCreated.body}` : 'Note title already in use');
 } else if (command === 'remove') {
   notes.removeNote(argv.title);
 } else if (command === 'list') {
