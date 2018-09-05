@@ -27,13 +27,14 @@ console.log('Command: ', command);
 
 if (command === 'add') {
   const noteCreated = notes.addNote(argv.title, argv.body);
-  console.log(noteCreated ? `Note added: Title: ${noteCreated.title}, Body: ${noteCreated.body}` : 'Note title already in use');
+  console.log(noteCreated ? `Note added: Title: '${noteCreated.title}', Body: '${noteCreated.body}'` : `Note with title '${argv.title}' already in use`);
 } else if (command === 'remove') {
-  console.log(notes.removeNote(argv.title) ? `Note ${argv.title} has been removed` : `Could not find note with title ${argv.title}`);
+  console.log(notes.removeNote(argv.title) ? `Note with title '${argv.title}' has been removed` : `Could not find note with title '${argv.title}'`);
 } else if (command === 'list') {
   notes.getAll();
 } else if (command === 'read') {
-  notes.getNote(argv.title);
+  const note = notes.getNote(argv.title);
+  console.log( note ? `Note found: Title: '${note.title}', Body: '${note.body}'` : `Note with title: '${argv.title}' not found`);
 } else {
   console.log('Command not recognised');
 }

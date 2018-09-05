@@ -32,7 +32,7 @@ const addNote = (title, body) => {
 const getNote = title => {
   const notes = fetchNotes();
   const requestedNote = notes.find(note => note.title === title);
-  console.log('Here is your note ==>', requestedNote);
+  return requestedNote;
 }
 
 const getAll = () => {
