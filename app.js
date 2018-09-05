@@ -29,7 +29,7 @@ if (command === 'add') {
   const noteCreated = notes.addNote(argv.title, argv.body);
   console.log(noteCreated ? `Note added: Title: ${noteCreated.title}, Body: ${noteCreated.body}` : 'Note title already in use');
 } else if (command === 'remove') {
-  notes.removeNote(argv.title);
+  console.log(notes.removeNote(argv.title) ? `Note ${argv.title} has been removed` : `Could not find note with title ${argv.title}`);
 } else if (command === 'list') {
   notes.getAll();
 } else if (command === 'read') {

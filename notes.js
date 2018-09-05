@@ -30,11 +30,8 @@ const addNote = (title, body) => {
 }
 
 const getNote = title => {
-  // Get existing notes
-  const notes = JSON.parse(fs.readFileSync('notes-data.json'));
-  // Find the note with matching title
+  const notes = fetchNotes();
   const requestedNote = notes.find(note => note.title === title);
-  // Log requested note
   console.log('Here is your note ==>', requestedNote);
 }
 
@@ -43,7 +40,10 @@ const getAll = () => {
 }
 
 const removeNote = title => {
-  console.log('Removing note', title);
+  let notes = fetchNotes();
+  const filteredNotes = notes.filter(note => note.title !== title);
+  saveNotes(filteredNotes);
+  return notes.length !== filteredNotes.length;
 }
 
 module.exports = {
