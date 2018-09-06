@@ -10,6 +10,8 @@ person.name = 'Mike'
 // when running and see debug> in terminal, run list(10) prints 10 lines above
 // and below.
 
+// Can also run using nodemon and/or arguements e.g. nodemon inspect app.js read --title=Shopping --body="carrots, apples, pears"
+
 // run 'n' command to take you to next line of code. At beginning will start on wrapper function
 // that all node code is wrapped in. Running 'n' will then run the next block of code.
 
