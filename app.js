@@ -34,6 +34,7 @@ if (command === 'add') {
   notes.getAll();
 } else if (command === 'read') {
   const note = notes.getNote(argv.title);
+  debugger;
   console.log( note ? `Note found: Title: '${note.title}', Body: '${note.body}'` : `Note with title: '${argv.title}' not found`);
 } else {
   console.log('Command not recognised');
