@@ -26,16 +26,28 @@ var command = argv._[0];
 console.log('Command: ', command);
 
 if (command === 'add') {
-  const noteCreated = notes.addNote(argv.title, argv.body);
-  console.log(noteCreated ? `Note added: Title: '${noteCreated.title}', Body: '${noteCreated.body}'` : `Note with title '${argv.title}' already in use`);
+  const note = notes.addNote(argv.title, argv.body);
+  if (note) {
+    console.log('Note created!');
+    notes.logNote(note);
+  } else {
+    `Note with title '${argv.title}' already in use`
+  }
 } else if (command === 'remove') {
-  console.log(notes.removeNote(argv.title) ? `Note with title '${argv.title}' has been removed` : `Could not find note with title '${argv.title}'`);
+  const removedNote = notes.removeNote(argv.title);
+  if (removedNote) {
+    console.log('Note removed!');
+    notes.logNote(removedNote);
+  } else {
+    `Could not find note with title '${argv.title}'`
+  }
 } else if (command === 'list') {
-  notes.getAll();
+  const allNotes = notes.getAll();
+  console.log(`Printing ${allNotes.length} notes `);
+  allNotes.forEach(notes.logNote);
 } else if (command === 'read') {
   const note = notes.getNote(argv.title);
-  debugger;
-  console.log( note ? `Note found: Title: '${note.title}', Body: '${note.body}'` : `Note with title: '${argv.title}' not found`);
+  console.log( note ? notes.logNote(note) : `Note with title: '${argv.title}' not found`);
 } else {
   console.log('Command not recognised');
 }
