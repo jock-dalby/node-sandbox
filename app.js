@@ -3,7 +3,34 @@ const _ = require('lodash');
 const yargs = require('yargs');
 
 const notes = require('./notes.js')
-const argv = yargs.argv;
+
+const titleOptions = {
+  describe: 'Title of note',
+  demand: true, // If this argument is required. This means now cannot run 'add' command without title arg
+  alias: 't' // allows you to set alias so don't have to type '--title'. Can now run 'node app.js add -t="Test title"'
+};
+
+const bodyOptions = {
+  describe: 'Body of note',
+  demand: true,
+  alias: 'b' // 'node app.js add -t="Test title" -b="Test body"'
+};
+
+const argv = yargs
+              .command('add', 'Add a new note', {
+                title: titleOptions,
+                body: bodyOptions
+              })
+              .command('list', 'List all notes')
+              .command('read', 'Read a note', {
+                title: titleOptions
+              })
+              .command('remove', 'Remove a note', {
+                title: titleOptions
+              })
+              .help() // Sets up yargs to return useful information when yargs runs the program 'node app.js --help'
+                      // 'node app.js add --help' prints add options above to terminal
+              .argv;
 
 // NOTE: this is an array of all the command line arguments passed in when starting the app
 // console.log('e.g. node app.js list',  '===> process.argv', process.argv);
